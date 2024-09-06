@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"localhos","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="简述这是一个拖了一个月的项目…能24小时直播头文字d的网站。除了可以看动漫外，这个网站还内置了公共聊天室，并实现了投票切集功能。当初构思的时候，想推头文字D这动漫，想着直接推应该没人会看，我要不直接搭个网站，这不就有人会看了。还能学习直播环境的搭建。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="头文字D自动直播网站">
+<meta property="og:url" content="http://localhos/2024/09/06/live-website/index.html">
+<meta property="og:site_name" content="自然原语">
+<meta property="og:description" content="简述这是一个拖了一个月的项目…能24小时直播头文字d的网站。除了可以看动漫外，这个网站还内置了公共聊天室，并实现了投票切集功能。当初构思的时候，想推头文字D这动漫，想着直接推应该没人会看，我要不直接搭个网站，这不就有人会看了。还能学习直播环境的搭建。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-09-06T05:37:39.175Z">
+<meta property="article:modified_time" content="2024-09-06T06:34:25.873Z">
+<meta property="article:author" content="abcde1477">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://localhos/2024/09/06/live-website/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>头文字D自动直播网站 | 自然原语</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">自然原语</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Natural Primitive</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://localhos/2024/09/06/live-website/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="abcde1477">
+      <meta itemprop="description" content="一个内容分发网站">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自然原语">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          头文字D自动直播网站
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-09-06 13:37:39 / Modified: 14:34:25" itemprop="dateCreated datePublished" datetime="2024-09-06T13:37:39+08:00">2024-09-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h3><p>这是一个拖了一个月的项目…能24小时直播头文字d的网站。<br>除了可以看动漫外，这个网站还内置了公共聊天室，并实现了投票切集功能。<br>当初构思的时候，想推头文字D这动漫，想着直接推应该没人会看，我要不直接搭个网站，这不就有人会看了。还能学习直播环境的搭建。</p>
+<span id="more"></span>
+<p>网址是：<strong><em>此文档不公布网址</em></strong><br>此网址末尾加上&#x2F;admin就是测试页面，显示了后端运行过程中的ffmpeg输出。懒得删就留在这了。如果中途切集或者刚刚开始或者结束会有不一样的输出。</p>
+<h3 id="显示不安全的连接"><a href="#显示不安全的连接" class="headerlink" title="显示不安全的连接"></a>显示不安全的连接</h3><p>选择高级-&gt;接受风险并继续。详细解释在下面，选择权在你。<br>因为没钱(或者说觉得麻烦),就没买域名也没整ssl证书(买或者免费领90天ssl证书需要你实际拥有这个域名,而我这个域名是一个ddns服务商免费给的，要30天一认领，所有权不在我)，所以我用的是自签名证书，用户点进去是一定会报不安全的连接的，详情见https部分。自签名证书风险是难以抵御中间人攻击 (无法证明用户连接的就是我的网站)，但仍然实现了加密传输。</p>
+<h3 id="直播内容"><a href="#直播内容" class="headerlink" title="直播内容"></a>直播内容</h3><p>目前设置的直播内容是《头文字D First stage》，之所以选择头文字D，是因为这是我最近看过的唯一古早动漫，模糊的画质可以减缓服务器的流量压力，而且《头文字D》雀氏浩勘，激斗情节的跌宕堪比JOJO，配乐神级插入，驾驶科普部分也让人眼前一亮…(会不会吹的有点过了)。</p>
+<h3 id="预留"><a href="#预留" class="headerlink" title="预留"></a>预留</h3><p>在编写过程中，为了未来能够复用代码，我做出了相应的预留。<br>把启动ffmpeg的代码设计为一个模块了，只需要简单的修改可以把直播内容换成别的视频。<br>还有给视频源批量转码的ffmpeg脚本也在，给视频文件预处理成合适的码率和格式很方便。</p>
+<h3 id="开源"><a href="#开源" class="headerlink" title="开源"></a>开源</h3><p>项目在未来应该会开源，但估计会先做出些改进代码写的难看被人知道也不太好…。然后还会写一些部署步骤，看未来什么情况吧，如果时间实在紧张的话被鸽了也在意料之中。</p>
+<h3 id="开发者的吐槽"><a href="#开发者的吐槽" class="headerlink" title="开发者的吐槽"></a>开发者的吐槽</h3><p>当初觉得这个项目应该挺简单的，也是抱着玩一玩的态度设计的，以为三四天左右就能搞好。<br>但后面发现这个项目的时间投入越来越无底洞起来，不断的发现当前方案的小bug，效果达不到预期。于是就不断的学习，修复，局部重构。方案换了好几版。<br>到现在可以说是了解了一个直播项目的架构了，也顺便尝试了神级编码工具ffmpeg的使用(现在简单的视频裁切,合并,编码只用命令行就能搞确实方便)。早期编译带插件的nginx时打算在docker中运行，于是自己写dockerfile，也学了些docker编译的操作，docker雀食方便，如果能解决网络问题的话。<br>最近平常除了娱乐之外，还在自学专业课，然后才是这个项目，推进的比较随缘，加上方案的变更，时间拉的特别长。说实话，现在赶工写完只是不想让它烂尾了，寒假时我的一个整合即时聊天+文件网络共享的项目已经被废弃了。</p>
+<h4 id="直播基本步骤"><a href="#直播基本步骤" class="headerlink" title="直播基本步骤"></a>直播基本步骤</h4><p>推流程序-&gt;流媒体服务器-&gt;客户看到的前端页面<br>现在的方案是:<br>ffmpeg以rtmp协议推流-&gt;SRS作为流媒体服务器-&gt;前端使用mpegts.js以http-flv协议拉流播放,</p>
+<h4 id="方案里一直没变的部分"><a href="#方案里一直没变的部分" class="headerlink" title="方案里一直没变的部分:"></a>方案里一直没变的部分:</h4><p>前后端分离。前端vue框架+naiveUI组件库；后端使用node，ffmpeg用于动漫播放推流，node通过启动ffmpeg子进程的方式来实现动漫播放控制。</p>
+<h4 id="方案更变的简单记录"><a href="#方案更变的简单记录" class="headerlink" title="方案更变的简单记录"></a>方案更变的简单记录</h4><p>v1:  流媒体服务器使用nginx加http-rtmp模块,前端web播放器还在做选择<br>(nginx加装插件需要手动编译…被迫学习如何编译nginx)</p>
+<p>v2:  敲定直播协议，选择rtmp协议推流，http-flv协议拉流，流媒体服务器改用nginx加http-flv模块，前端使用flv.js拉流播放<br>(说起来http-flv模块是GPT给我推荐的，我说我想要一个支持http-flv的流媒体服务器…实际上配置复杂，性能也不太好，文档不清晰，应该是作者先是自用然后再开源的，对新人不太友好，我也没时间去解读源码…)</p>
+<p>v3: 发现nginx+http-flv模块作为流媒体服务器运行不太正常，经常会卡死。于是更换流媒体服务器为SRS,nginx只作为静态服务器和反向代理。<br>(使用docker部署SRS真的方便啊，只需要一条指令，开箱即用)</p>
+<p>v4: 发现flv.js很久没用更新了，用作直播有很多小bug，后来发现flv.js作者原b站员工，后来离职了，项目放在bilibili的仓库那，自己没法更新，于是改用作者的新播放器mpegts.js<br>(这是最终版本了…)</p>
+<h3 id="用到的所有库-平台和工具"><a href="#用到的所有库-平台和工具" class="headerlink" title="用到的所有库,平台和工具"></a>用到的所有库,平台和工具</h3><p>vite用于构建前端项目以及前端开发调试<br>vue作为前端框架<br>naiveUI，一个vue组件库<br>mpegts.js，一个web播放器，支持多种格式的视频流播放<br>socket.io，一个基于事件的双向网络交流库<br>底层协议是websocket或http(长连接)</p>
+<p>node.js，跨平台的JavaScript运行时环境，我用作服务器后端，处理网络服务与事物逻辑，并且负责视频推流的控制<br>express，node.js的服务器框架<br>mysql2，用于在node.js上与mysql服务器进行连接的库<br>ffmpeg，强大的命令行视频编码工具，也可以用于视频推流，我在node.js中以子进程的方式进行调用</p>
+<p>nginx，网关服务器，设置https以及分发静态资源(比如前端页面)<br>SRS，开源的流媒体服务器，性能不错<br>mysql，数据库软件，用于持久化存储</p>
+<p>WebStorm，互联网相关的集成开发环境，远程开发功能很好用，我的整个开发过程只有早期是在本地的，后面一直都在服务器上进行的，服务器上配置过网关，开发测试十分方便。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/09/06/hello-world/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%BE%E7%A4%BA%E4%B8%8D%E5%AE%89%E5%85%A8%E7%9A%84%E8%BF%9E%E6%8E%A5"><span class="nav-number">2.</span> <span class="nav-text">显示不安全的连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%B4%E6%92%AD%E5%86%85%E5%AE%B9"><span class="nav-number">3.</span> <span class="nav-text">直播内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%84%E7%95%99"><span class="nav-number">4.</span> <span class="nav-text">预留</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E6%BA%90"><span class="nav-number">5.</span> <span class="nav-text">开源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E8%80%85%E7%9A%84%E5%90%90%E6%A7%BD"><span class="nav-number">6.</span> <span class="nav-text">开发者的吐槽</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B4%E6%92%AD%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4"><span class="nav-number">6.1.</span> <span class="nav-text">直播基本步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E9%87%8C%E4%B8%80%E7%9B%B4%E6%B2%A1%E5%8F%98%E7%9A%84%E9%83%A8%E5%88%86"><span class="nav-number">6.2.</span> <span class="nav-text">方案里一直没变的部分:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E6%9B%B4%E5%8F%98%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%B0%E5%BD%95"><span class="nav-number">6.3.</span> <span class="nav-text">方案更变的简单记录</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E5%88%B0%E7%9A%84%E6%89%80%E6%9C%89%E5%BA%93-%E5%B9%B3%E5%8F%B0%E5%92%8C%E5%B7%A5%E5%85%B7"><span class="nav-number">7.</span> <span class="nav-text">用到的所有库,平台和工具</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">abcde1477</p>
+  <div class="site-description" itemprop="description">一个内容分发网站</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">abcde1477</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
