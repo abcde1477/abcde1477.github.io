@@ -20,17 +20,19 @@
     var CONFIG = {"hostname":"abcde1477.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="一个内容分发网站">
-<meta property="og:type" content="website">
-<meta property="og:title" content="自然原语">
-<meta property="og:url" content="http://abcde1477.github.io/archives/2024/index.html">
+  <meta name="description" content="此推文未完成此推文未完成此推文未完成大二寒假的时候，想做一个带公共聊天室，能存储历史记录，文件托管(包括文件分割上传，哈希比较减少重复上传，支持下载重试)等功能。但是非常不幸的是，这个项目烂尾了。具体的说是:前期技术不足，就想着边学边实现。后期技术满足开发需求，但是又发现有同类产品。所以寒假结束之后，过了一个月就决定放弃了。我发现的同类产品，即是tailchat，虽然我所设计的是公共聊天室，而ta">
+<meta property="og:type" content="article">
+<meta property="og:title" content="部署开源聊天软件taichat">
+<meta property="og:url" content="http://abcde1477.github.io/2024/08/09/deploy-tailchat/index.html">
 <meta property="og:site_name" content="自然原语">
-<meta property="og:description" content="一个内容分发网站">
+<meta property="og:description" content="此推文未完成此推文未完成此推文未完成大二寒假的时候，想做一个带公共聊天室，能存储历史记录，文件托管(包括文件分割上传，哈希比较减少重复上传，支持下载重试)等功能。但是非常不幸的是，这个项目烂尾了。具体的说是:前期技术不足，就想着边学边实现。后期技术满足开发需求，但是又发现有同类产品。所以寒假结束之后，过了一个月就决定放弃了。我发现的同类产品，即是tailchat，虽然我所设计的是公共聊天室，而ta">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-08-09T11:36:50.000Z">
+<meta property="article:modified_time" content="2024-09-06T12:54:45.906Z">
 <meta property="article:author" content="abcde1477">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://abcde1477.github.io/archives/2024/">
+<link rel="canonical" href="http://abcde1477.github.io/2024/08/09/deploy-tailchat/">
 
 
 <script id="page-configurations">
@@ -38,12 +40,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>归档 | 自然原语</title>
+  <title>部署开源聊天软件taichat | 自然原语</title>
   
 
 
@@ -157,110 +159,97 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 4 篇日志。 继续努力。</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://abcde1477.github.io/2024/08/09/deploy-tailchat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="abcde1477">
+      <meta itemprop="description" content="一个内容分发网站">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="自然原语">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          部署开源聊天软件taichat
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-08-09 19:36:50" itemprop="dateCreated datePublished" datetime="2024-08-09T19:36:50+08:00">2024-08-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-09-06 20:54:45" itemprop="dateModified" datetime="2024-09-06T20:54:45+08:00">2024-09-06</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%83%A8%E7%BD%B2/" itemprop="url" rel="index"><span itemprop="name">部署</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2024</span>
+        <p><strong>此推文未完成</strong><br><strong>此推文未完成</strong><br><strong>此推文未完成</strong><br>大二寒假的时候，想做一个带公共聊天室，能存储历史记录，文件托管(包括文件分割上传，哈希比较减少重复上传，支持下载重试)等功能。但是非常不幸的是，这个项目烂尾了。<br>具体的说是:前期技术不足，就想着边学边实现。后期技术满足开发需求，但是又发现有同类产品。所以寒假结束之后，过了一个月就决定放弃了。<br>我发现的同类产品，即是<strong>tailchat</strong>，虽然我所设计的是公共聊天室，而tailchat是即时聊天软件。但经过配置，可以实现新建用户自动加群的功能，这和公共聊天室无异。</p>
+<p>大概花了两天完成了部署，其中3&#x2F;4的时间都花在了docker的配置上，因为最近几个月正好赶上了国内docker镜像源全数关闭的事，安装代理，配置代理花费了我大量的时间。此文末会注上解决docker无法访问的相关步骤<br>网址:<strong><em>此文档不公布网址</em></strong></p>
+<span id="more"></span>
+<h2 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h2>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2024-09-06T16:45:40+08:00"
-              content="2024-09-06">
-          09-06
-        </time>
-      </div>
+      <footer class="post-footer">
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/09/06/live-website/" itemprop="url">
-            <span itemprop="name">24h自动化直播网站(头文字D)</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2024-09-06T16:42:10+08:00"
-              content="2024-09-06">
-          09-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/09/06/deploy-blog/" itemprop="url">
-            <span itemprop="name">自建博客</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2024-08-09T19:36:50+08:00"
-              content="2024-08-09">
-          08-09
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/08/09/deploy-tailchat/" itemprop="url">
-            <span itemprop="name">部署开源聊天软件taichat</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2024-06-11T19:59:03+08:00"
-              content="2024-06-11">
-          06-11
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/06/11/develop-database-system/" itemprop="url">
-            <span itemprop="name">前后端分离的数据库系统</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
+        
 
 
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/06/11/develop-database-system/" rel="prev" title="前后端分离的数据库系统">
+      <i class="fa fa-chevron-left"></i> 前后端分离的数据库系统
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/09/06/deploy-blog/" rel="next" title="自建博客">
+      自建博客 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
-  </div>
+      </footer>
+    
+  </article>
   
   
-  
-
   
 
 
@@ -313,6 +302,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">简单介绍</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
