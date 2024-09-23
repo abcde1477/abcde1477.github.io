@@ -14,10 +14,11 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"abcde1477.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"abcde1477.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="此推文未完成此推文未完成此推文未完成大二寒假的时候，想做一个带公共聊天室，能存储历史记录，文件托管(包括文件分割上传，哈希比较减少重复上传，支持下载重试)等功能。但是非常不幸的是，这个项目烂尾了。具体的说是:前期技术不足，就想着边学边实现。后期技术满足开发需求，但是又发现有同类产品。所以寒假结束之后，过了一个月就决定放弃了。我发现的同类产品，即是tailchat，虽然我所设计的是公共聊天室，而ta">
@@ -28,7 +29,7 @@
 <meta property="og:description" content="此推文未完成此推文未完成此推文未完成大二寒假的时候，想做一个带公共聊天室，能存储历史记录，文件托管(包括文件分割上传，哈希比较减少重复上传，支持下载重试)等功能。但是非常不幸的是，这个项目烂尾了。具体的说是:前期技术不足，就想着边学边实现。后期技术满足开发需求，但是又发现有同类产品。所以寒假结束之后，过了一个月就决定放弃了。我发现的同类产品，即是tailchat，虽然我所设计的是公共聊天室，而ta">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-08-09T11:36:50.000Z">
-<meta property="article:modified_time" content="2024-09-07T06:34:35.324Z">
+<meta property="article:modified_time" content="2024-09-23T04:46:27.744Z">
 <meta property="article:author" content="abcde1477">
 <meta property="article:tag" content="基建向">
 <meta name="twitter:card" content="summary">
@@ -77,6 +78,7 @@
   </style>
 </noscript>
 
+<link rel="alternate" href="/atom.xml" title="自然原语" type="application/atom+xml">
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage">
@@ -197,7 +199,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-09-07 14:34:35" itemprop="dateModified" datetime="2024-09-07T14:34:35+08:00">2024-09-07</time>
+                <time title="修改时间：2024-09-23 12:46:27" itemprop="dateModified" datetime="2024-09-23T12:46:27+08:00">2024-09-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -222,14 +224,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>372</span>
+              <span>1.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
+              <span>3 分钟</span>
             </span>
 
         </div>
@@ -244,7 +246,12 @@
         <p><strong>此推文未完成</strong><br><strong>此推文未完成</strong><br><strong>此推文未完成</strong><br>大二寒假的时候，想做一个带公共聊天室，能存储历史记录，文件托管(包括文件分割上传，哈希比较减少重复上传，支持下载重试)等功能。但是非常不幸的是，这个项目烂尾了。<br>具体的说是:前期技术不足，就想着边学边实现。后期技术满足开发需求，但是又发现有同类产品。所以寒假结束之后，过了一个月就决定放弃了。<br>我发现的同类产品，即是<strong>tailchat</strong>，虽然我所设计的是公共聊天室，而tailchat是即时聊天软件。但经过配置，可以实现新建用户自动加群的功能，这和公共聊天室无异。</p>
 <p>大概花了两天完成了部署，其中3&#x2F;4的时间都花在了docker的配置上，因为最近几个月正好赶上了国内docker镜像源全数关闭的事，安装代理，配置代理花费了我大量的时间。<strong>此文末会注上docker无法访问源的解决方法</strong><br>网址:<strong><em>此文档不公布网址</em></strong></p>
 <span id="more"></span>
-<h2 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h2>
+<h2 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h2><!-- 想烂尾了，不想搞了，全忘了，就是莫名其妙安装好了。而且这东西也不一定干净-->
+
+<h2 id="安装docker的问题"><a href="#安装docker的问题" class="headerlink" title="安装docker的问题"></a>安装docker的问题</h2><h3 id="环境变量的介绍"><a href="#环境变量的介绍" class="headerlink" title="环境变量的介绍"></a>环境变量的介绍</h3><h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><p><em>docker文档(安装): <a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/">Install Docker Engine</a><br>这里主要说的是linux下的docker安装，mac直接在官网下载dmg镜像安装就行了。<br>其次，linux下有提供了两种docker，docker-engine和docker-desktop。desktop版本提供了图形界面，二者的安装位置不同，可以同时运行，因此其中一个docker安装&#x2F;运行的镜像&#x2F;容器不会在另一个docker中共享。</em><br>    我的服务器是服务器版的ubuntu，无图形界面。这里使用apt方式安装docker。<br>官方文档:<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/install/ubuntu/">Install Docker Engine on Ubuntu</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Add Docker&#x27;s official GPG key:</span></span><br><span class="line"><span class="built_in">sudo</span> apt-get update</span><br><span class="line"><span class="built_in">sudo</span> apt-get install ca-certificates curl</span><br><span class="line"><span class="built_in">sudo</span> install -m 0755 -d /etc/apt/keyrings</span><br><span class="line"><span class="built_in">sudo</span> curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc <span class="comment"># curl可以被环境变量影响的</span></span><br><span class="line"><span class="built_in">sudo</span> <span class="built_in">chmod</span> a+r /etc/apt/keyrings/docker.asc</span><br><span class="line"></span><br><span class="line"><span class="comment"># Add the repository to Apt sources:</span></span><br><span class="line"><span class="built_in">echo</span> \</span><br><span class="line">  <span class="string">&quot;deb [arch=<span class="subst">$(dpkg --print-architecture)</span> signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \</span></span><br><span class="line"><span class="string">  <span class="subst">$(. /etc/os-release &amp;&amp; echo <span class="string">&quot;<span class="variable">$VERSION_CODENAME</span>&quot;</span>)</span> stable&quot;</span> | \</span><br><span class="line">  <span class="built_in">sudo</span> <span class="built_in">tee</span> /etc/apt/sources.list.d/docker.list &gt; /dev/null</span><br><span class="line"><span class="built_in">sudo</span> apt-get update <span class="comment"># 这一步需要代理</span></span><br></pre></td></tr></table></figure>
+<p>这里要使用代理软件进行，不然死活装不上。<br>首先下载一个代理软件，配置好之后，找到代理软件给出的代理端口。v2的代理默认地址是<a href="http://localhost:10808，将它设置为软件的代理地址，这个软件进行网络请求会默认给代理软件处理。">http://localhost:10808，将它设置为软件的代理地址，这个软件进行网络请求会默认给代理软件处理。</a><br><em>平常使用代理软件，不都是需要点击”设置为系统代理”吗？这个意思就是，将代理网址设置为环境变量(HTTP_PROXY,HTTPS_PROXY)，每次会读取环境变量的软件，就会知道使用这个代理网址进行代理。</em><br>所以上面的指令要加入特定的参数，使得下载走代理而不是直接连接:</p>
+
     </div>
 
     
@@ -261,10 +268,7 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2024/06/11/develop-database-system/" rel="prev" title="前后端分离的数据库系统">
-      <i class="fa fa-chevron-left"></i> 前后端分离的数据库系统
-    </a></div>
+      <div class="post-nav-item"></div>
       <div class="post-nav-item">
     <a href="/2024/09/06/deploy-blog/" rel="next" title="自建博客">
       自建博客 <i class="fa fa-chevron-right"></i>
@@ -327,7 +331,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">简单介绍</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">简单介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85docker%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.</span> <span class="nav-text">安装docker的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.1.</span> <span class="nav-text">环境变量的介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85docker"><span class="nav-number">2.2.</span> <span class="nav-text">安装docker</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -356,7 +360,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -364,6 +368,9 @@
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
         <a href="https://github.com/abcde1477" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;abcde1477" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fa fa-rss fa-fw"></i>RSS</a>
       </span>
   </div>
 
@@ -397,12 +404,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">5k</span>
+    <span title="站点总字数">10k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">9 分钟</span>
+    <span title="站点阅读时长">17 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
@@ -442,6 +449,8 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
