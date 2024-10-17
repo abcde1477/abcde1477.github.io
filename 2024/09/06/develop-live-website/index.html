@@ -32,7 +32,7 @@
 <meta property="og:image" content="http://abcde1477.github.io/images/posts/live-website/%E6%8A%95%E7%A5%A8.png">
 <meta property="og:image" content="http://abcde1477.github.io/images/posts/live-website/%E6%9E%B6%E6%9E%84.png">
 <meta property="article:published_time" content="2024-09-06T08:45:40.000Z">
-<meta property="article:modified_time" content="2024-09-07T13:05:09.027Z">
+<meta property="article:modified_time" content="2024-09-23T12:51:08.564Z">
 <meta property="article:author" content="abcde1477">
 <meta property="article:tag" content="单页应用">
 <meta property="article:tag" content="学习向项目">
@@ -205,7 +205,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-09-07 21:05:09" itemprop="dateModified" datetime="2024-09-07T21:05:09+08:00">2024-09-07</time>
+                <time title="修改时间：2024-09-23 20:51:08" itemprop="dateModified" datetime="2024-09-23T20:51:08+08:00">2024-09-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -230,7 +230,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.4k</span>
+              <span>2.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -272,7 +272,8 @@
 </div>
 
 
-<h3 id="开发者的吐槽"><a href="#开发者的吐槽" class="headerlink" title="开发者的吐槽"></a>开发者的吐槽</h3><p>当初觉得这个项目应该挺简单的，也是抱着玩一玩的态度设计的，以为三四天左右就能搞好。<br>但后面发现这个项目的时间投入越来越无底洞起来，不断的发现当前方案的小bug，效果达不到预期。于是就不断的学习，修复，局部重构。方案换了好几版。<br>到现在可以说是了解了一个直播项目的架构了，也顺便尝试了神级编码工具ffmpeg的使用(现在简单的视频裁切,合并,编码只用命令行就能搞确实方便)。早期编译带插件的nginx时打算在docker中运行，于是自己写dockerfile，也学了些docker编译的操作，docker雀食方便，如果能解决网络问题的话。<br>最近平常除了娱乐之外，还在自学专业课，然后才是这个项目，推进的比较随缘，加上方案的变更，时间拉的特别长。说实话，现在赶工写完只是不想让它烂尾了，寒假时我的一个整合即时聊天+文件网络共享的项目已经被废弃了。</p>
+<h3 id="开发者的吐槽"><a href="#开发者的吐槽" class="headerlink" title="开发者的吐槽"></a>开发者的吐槽</h3><p>当初觉得这个项目应该挺简单的，也是抱着玩一玩的态度设计的，以为三四天左右就能搞好。<br>但后面发现这个项目的时间投入越来越无底洞起来，不断的发现当前方案的小bug，效果达不到预期。于是就不断的学习，修复，局部重构。方案换了好几版。<br>到现在可以说是了解了一个直播项目的架构了，也顺便尝试了神级编码工具ffmpeg的使用(现在简单的视频裁切,合并,编码只用命令行就能搞确实方便)。早期编译带插件的nginx时打算在docker中运行，于是自己写dockerfile，也学了些docker编译的操作，docker雀食方便，如果能解决网络问题的话。<br>最后回顾一下，我认为这里使用的架构也可以用于web摄像头。总之即使这个idea比较神经，但是最后挑选出来的架构方案是比较有意义的。  </p>
+<p>暑假时间除了简单的娱乐之外，还在自学《编译原理》，然后才是这个项目，推进的比较随缘，加上方案的变更，时间拉的特别长。说实话，现在赶工写完只是不想让它烂尾了，寒假时我的一个整合即时聊天+文件网络共享的项目已经被废弃了，见<a href="%22/about%22">部署开源聊天软件tailchat</a>。  </p>
 <h4 id="直播基本步骤"><a href="#直播基本步骤" class="headerlink" title="直播基本步骤"></a>直播基本步骤</h4><p>推流程序-&gt;流媒体服务器-&gt;客户看到的前端页面<br>现在的方案是:<br>ffmpeg以rtmp协议推流-&gt;SRS作为流媒体服务器-&gt;前端使用mpegts.js以http-flv协议拉流播放,</p>
 <h4 id="方案里一直没变的部分"><a href="#方案里一直没变的部分" class="headerlink" title="方案里一直没变的部分:"></a>方案里一直没变的部分:</h4><p>前后端分离。前端vue框架+naiveUI组件库；后端使用node，ffmpeg用于动漫播放推流，node通过启动ffmpeg子进程的方式来实现动漫播放控制。</p>
 <h4 id="方案更变的简单记录"><a href="#方案更变的简单记录" class="headerlink" title="方案更变的简单记录"></a>方案更变的简单记录</h4><p>v1:  流媒体服务器使用nginx加http-rtmp模块,前端web播放器还在做选择<br>(nginx加装插件需要手动编译…被迫学习如何编译nginx)</p>
@@ -286,7 +287,7 @@
     <div><center><i>最终的架构图</i></center></div>
 </div>
 
-<h3 id="用到的所有库-平台和工具"><a href="#用到的所有库-平台和工具" class="headerlink" title="用到的所有库,平台和工具"></a>用到的所有库,平台和工具</h3><p>vite用于构建前端项目以及前端开发调试<br>vue作为前端框架<br>naiveUI，一个vue组件库<br>mpegts.js，一个web播放器，支持多种格式的视频流播放<br>socket.io，一个基于事件的双向网络交流库<br>底层协议是websocket或http(长连接)</p>
+<h3 id="用到的所有库-平台和工具"><a href="#用到的所有库-平台和工具" class="headerlink" title="用到的所有库,平台和工具"></a>用到的所有库,平台和工具</h3><p>vite用于构建前端项目以及前端开发调试<br>vue作为前端框架<br>naiveUI，一个vue组件库<br>mpegts.js，一个web播放器，支持多种格式的视频流播放<br>socket.io，一个基于事件的双向网络交流库，信息交互的API是发送事件的形式，底层协议是websocket或http(长连接)</p>
 <p>node.js，跨平台的JavaScript运行时环境，我用作服务器后端，处理网络服务与事物逻辑，并且负责视频推流的控制<br>express，node.js的服务器框架<br>mysql2，用于在node.js上与mysql服务器进行连接的库<br>ffmpeg，强大的命令行视频编码工具，也可以用于视频推流，我在node.js中以子进程的方式进行调用</p>
 <p>nginx，网关服务器，设置https以及分发静态资源(比如前端页面)<br>SRS，开源的流媒体服务器，性能不错<br>mysql，数据库软件，用于持久化存储</p>
 <p>WebStorm，互联网相关的集成开发环境，远程开发功能很好用，我的整个开发过程只有早期是在本地的，后面一直都在服务器上进行的，服务器上配置过网关，开发测试十分方便。</p>
@@ -391,7 +392,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -448,12 +449,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">10k</span>
+    <span title="站点总字数">11k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">17 分钟</span>
+    <span title="站点阅读时长">18 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
   </div>
