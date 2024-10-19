@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://abcde1477.github.io/images/posts/new-server-and-openvpn/with-cover.jpg">
 <meta property="og:image" content="http://abcde1477.github.io/images/posts/new-server-and-openvpn/no-cover.jpg">
 <meta property="article:published_time" content="2024-09-21T14:53:28.000Z">
-<meta property="article:modified_time" content="2024-10-17T13:19:52.418Z">
+<meta property="article:modified_time" content="2024-10-19T11:13:25.052Z">
 <meta property="article:author" content="abcde1477">
 <meta property="article:tag" content="基建向">
 <meta property="article:tag" content="服务器">
@@ -203,7 +203,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-10-17 21:19:52" itemprop="dateModified" datetime="2024-10-17T21:19:52+08:00">2024-10-17</time>
+                <time title="修改时间：2024-10-19 19:13:25" itemprop="dateModified" datetime="2024-10-19T19:13:25+08:00">2024-10-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,7 +228,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>4.8k</span>
+              <span>5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -250,7 +250,7 @@
         <p>最近又部署了台服务器，毕竟公网ip的电信宽带不能浪费。机子是N5095工控机，24年2月买的，原先准备替换原有的服务器以降低功耗低，(旧服务器准备替换下做家用机给家里人用)，但是测试之后发现<strong>性能不太行</strong>，于是准备留着当备用服务器。  </p>
 <p>主板300¥，加上内存ssd机箱500¥。当初觉得它x86+15w功耗是个不错的亮点，所以决定入手的。<strong>但半个月之后就后悔了，家里有台废弃不用的笔记本，不比它更好，功率就二十几w，还自带显示器键盘电池...</strong>。以后还是少捡点垃圾…</p>
 <p>这台机子刷过ubuntu server测性能，之后刷了windows10发现太卡。最后决定作为备用服务器用，拖到今天，准备安装ubuntu desktop，尝尝鲜，并使用openvpn而不是直接把资源放公网。</p>
-<p>Sep28更新: 由于openvpn效果不佳，vpn改用wireguard<br>Oct10更新: <strong>服务器炸了</strong>,改日维修</p>
+<p>Sep28更新: 由于openvpn效果不佳，vpn改用wireguard<br>Oct10更新: <strong>服务器炸了</strong>,改日维修。Link: <a href="2024/10/10/tragic-news/">悲报</a></p>
 <span id="more"></span>
 <h2 id="机子照片"><a href="#机子照片" class="headerlink" title="机子照片"></a>机子照片</h2><center><div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center; justify-items: center; width: 80%;">
     <div>
@@ -286,6 +286,7 @@
 <p>wireguard的服务器配置和客户端配置的格式是一样的，都是一个Interface和一个Peer，GPT给出的回答如下:<br><em>在 WireGuard 中，对等端（Peer）不必区分是服务器还是客户端，因为 WireGuard 本身是基于对等端（peer-to-peer）架构设计的。每个设备都可以是一个WireGuard 对等端，它们之间没有严格的“服务器”和“客户端”角色划分。</em><br>不过我还是以服务器和客户端的思路配置为一个星形网络了，毕竟我的客户端基本都没有公网IP。<br>自己尝试下来，wireguard的配置难度比openvpn简单多了…  </p>
 <h4 id="基本步骤"><a href="#基本步骤" class="headerlink" title="基本步骤"></a>基本步骤</h4><p><strong>服务端：</strong><br>安装：<br>&emsp;<code>sudo apt install wireguard</code><br>定位到wireguard配置目录：<br>&emsp;<code>sudo bash</code><br>&emsp;<code>cd /etc/wireguard</code><br>生成密钥对：<br>&emsp;<code>wg genkey | tee ./server_private.key | wg pubkey | tee ./server_public.key</code><br>编辑配置文件：<br>&emsp;<code>vim wg0.conf</code>,格式见下文<br>启动以及自启动：<br>&emsp;<code>sudo systemctl enable wg-quick@wg0</code><br>&emsp;<code>sudo systemctl start wg-quick@wg0</code>  </p>
 <p><strong>客户端：</strong><br>Windows，Mac，Android都有带GUI的客户端，客户端自带密钥对生成。<br>windows，Mac的客户端有个文本框输入配置信息。配置信息格式参考下文的ini键值对<br>Android的配置信息编辑比较直观，配置的键名都有翻译。<br>都有GUI了就不多说什么了   </p>
+<p><strong>其他问题</strong><br>貌似服务器重启wg，客户端也需要重启wg才可以继续连接。<br>要实现客户端和客户端之间的连接(即通过某节点连接到另一节点)，需要在中间节点开启IPv4转发，参考<a target="_blank" rel="noopener" href="https://www.lxtend.com/clients-cannot-ping-each-other-using-wireguard/">博客: WireGuard组网后节点无法互相Ping通解决办法</a>  </p>
 <h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>服务器配置：</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[Interface]</span></span><br><span class="line"><span class="attr">Address</span> = <span class="number">10.0</span>.<span class="number">0.1</span>/<span class="number">24</span>    <span class="comment"># 服务器的虚拟IP</span></span><br><span class="line"><span class="attr">ListenPort</span> = <span class="number">51820</span>    <span class="comment"># WireGuard 监听的端口</span></span><br><span class="line"><span class="attr">PrivateKey</span> = &lt;服务器私钥&gt;    <span class="comment"># 服务器的私钥</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 可选：开启IP转发，PostUp表示启动时执行的指令，PostDown表示关闭时的指令</span></span><br><span class="line"><span class="comment"># PostUp = sysctl -w net.ipv4.ip_forward=1</span></span><br><span class="line"><span class="comment"># PostUp = iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># PostDown = sysctl -w net.ipv4.ip_forward=0</span></span><br><span class="line"><span class="comment"># PostDown = iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 允许的客户端</span></span><br><span class="line"><span class="section">[Peer]</span></span><br><span class="line"><span class="attr">PublicKey</span> = &lt;client_public_key_1&gt;    <span class="comment"># 客户端1的公钥(wireguard用公钥来标识一个节点)</span></span><br><span class="line"><span class="attr">AllowedIPs</span> = <span class="number">10.0</span>.<span class="number">0.2</span>/<span class="number">32</span>    <span class="comment"># 允许的客户端 IP 地址(这个需要和客户端配置的[Interface]Address值一致，会有一个验证机制在这里的)</span></span><br><span class="line"><span class="section">[Peer]</span></span><br><span class="line"><span class="attr">PublicKey</span> = &lt;client_public_key_2&gt;    <span class="comment"># 客户端2的公钥</span></span><br><span class="line"><span class="attr">AllowedIPs</span> = <span class="number">10.0</span>.<span class="number">0.3</span>/<span class="number">32</span>    <span class="comment"># 允许的客户端 IP 地址</span></span><br></pre></td></tr></table></figure>
 <p>Interface用来创建一个虚拟接口(ifconfig可以看到这个)<br>Peer用来配置节点信息，这里的节点自然是客户端。  </p>
